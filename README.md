@@ -11,12 +11,10 @@ A gitHub actions pipeline will invoke the [Monitoring as Code Runner](https://gi
 
 # Setup
 
-The GitHub Action requires these pipeline secrets
+The GitHub Action requires these pipeline secrets and used in [monaco environments file](monaco/environments.yml)
 
-```
-# DT_BASE_URL  - monaco environments file, for example https://ABC.live.dynatrace.com
-# DT_API_TOKEN - monaco environments file, with V2: SLO read/write & V1: read/write config & access problem/event feed
-```
+* `DT_BASEURL` - for example https://ABC.live.dynatrace.com
+* `DT_API_TOKEN` - with V2 permissions to add/update/delete the defined Configurations
 
 # Local Testing
 

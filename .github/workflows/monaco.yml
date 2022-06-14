@@ -19,7 +19,7 @@ jobs:
     container:
       image: dynatraceace/monaco-runner:release-v1.6.0
       env:
-        DT_BASE_URL: ${{ secrets.DT_BASE_URL }}
+        DT_BASE_URL: ${{ secrets.DT_BASEURL }}
         DT_API_TOKEN: ${{ secrets.DT_API_TOKEN }}
         NEW_CLI: "1"
         OWNER_EMAIL: rob.jahn@dynatrace.com

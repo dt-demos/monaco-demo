@@ -1,6 +1,10 @@
-# requires the following secrets:
-# DT_BASE_URL
-# DT_API_TOKEN 
+# requires the following github action secrets:
+# DT_BASEURL
+# DT_API_TOKEN
+
+# this pipeline is to be run manually 
+# takes service name as required input
+# run type defaults to create and can be value of create or delete
 
 name: Dynatrace Monitoring as Code
 on:

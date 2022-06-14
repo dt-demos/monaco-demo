@@ -28,9 +28,20 @@ jobs:
       # github automatically creates a volume to the checked out code
       # so we can reference them via ./foldername
       - uses: actions/checkout@v2
-      
-      - name: Monaco version
-        run: monaco --version 
-
       - name: Run Monaco
-        run:  monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects
+        run:  |
+          if [[ "${{ github.event.inputs.run-type }}" == "create" ]]; then
+            echo "Creating configuration"
+            monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects
+          elif [[ "$RUN_TYPE" == "delete" ]]; then
+            echo "Deleting configuration"
+            # need to  replace the service name value for the delete.yaml file
+            sed -e 's~SERVICE_NAME~'"${{ github.event.inputs.service-name }}"'~' \
+              ./monaco/projects/delete.tmpl > ./monaco/projects/delete.yaml
+            monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects
+            # once the delete is done, then delete the yaml file else it gets picked up on create
+            rm ./monaco/projects/delete.yaml
+          else 
+            echo "ABORT: Bad RUN_TYPE value."
+            exit 1
+          fi

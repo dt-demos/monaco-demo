@@ -15,8 +15,8 @@ availabilitySlo:
 performanceSlo:
   - name: "Service {{ .Env.SERVICE_NAME }} Performance SLO"
   - description: "% of requests handled by {{ .Env.SERVICE_NAME }} service faster than 500ms"
-  - expression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
-  - filter: "type(\\\"SYNTHETIC_TEST\\\")"
+  - expression: "(100)*(builtin:service.response.time:splitBy())/(builtin:service.response.time:splitBy())"
+  - filter: "type(\\\"SERVICE\\\")"
   - target: "85.00"
   - warning: "90.00"
   - timeframe: "-1d"

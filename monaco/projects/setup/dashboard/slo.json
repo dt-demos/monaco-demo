@@ -224,7 +224,7 @@
         {
           "id": "A",
           "timeAggregation": "DEFAULT",
-          "metricSelector": "(100)*(calc:service.tenant.responsetime.count.faster500ms:splitBy())/(builtin:service.requestCount.server:splitBy())",
+          "metricSelector": "(100)*(builtin:service.requestCount.server:splitBy())/(builtin:service.requestCount.server:splitBy())",
           "enabled": true
         }
       ],

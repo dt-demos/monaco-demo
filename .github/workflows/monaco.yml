@@ -1,0 +1,36 @@
+# requires the following secrets:
+# DT_BASE_URL
+# DT_API_TOKEN 
+
+name: Dynatrace Monitoring as Code
+on:
+  workflow_dispatch:
+    inputs:
+      service-name:
+        description: 'Name of service to onboard'     
+        required: true
+      run-type:
+        description: 'Specify configuration change as create or delete'     
+        required: true
+        default: 'create'
+jobs:
+  observability-configuration:
+    runs-on: ubuntu-latest
+    container:
+      image: dynatraceace/monaco-runner:release-v1.6.0
+      env:
+        DT_BASE_URL: ${{ secrets.DT_BASE_URL }}
+        DT_API_TOKEN: ${{ secrets.DT_API_TOKEN }}
+        NEW_CLI: "1"
+        OWNER_EMAIL: rob.jahn@dynatrace.com
+        SERVICE_NAME: ${{ github.event.inputs.service-name }}
+    steps:
+      # github automatically creates a volume to the checked out code
+      # so we can reference them via ./foldername
+      - uses: actions/checkout@v2
+      
+      - name: Monaco version
+        run: monaco --version 
+
+      - name: Run Monaco
+        run:  monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects

@@ -13,22 +13,20 @@ on:
         description: 'Specify action as create or delete'     
         required: true
         default: 'create'
+      owner-email:
+        description: 'Specify dashboard owner'     
+        required: true
+        default: 'rob.jahn@dyntrace.com'
 jobs:
-  monaco-file-processing:
+  process-monaco-files:
     runs-on: ubuntu-latest
     steps:
       # github automatically creates a volume to the checked out code
       # so we can reference them via ./foldername
       - uses: actions/checkout@v2
-      - name: Process files
+      - name: Process Monaco files
         run:  |
-          if [[ "${{ github.event.inputs.run-type }}" == "create" ]]; then
-            ls -l ./scripts
-            ./scripts/create-monaco-files.sh "${{ github.event.inputs.service-name }}"
-          elif [[ "${{ github.event.inputs.run-type }}" == "delete" ]]; then
-            echo "Deleting configuration"
-            ./scripts/delete-monaco-files.sh "${{ github.event.inputs.service-name }}"
-          else 
-            echo "ABORT: Bad RUN_TYPE value."
-            exit 1
-          fi
+          ./scripts/process-monaco-files.sh \
+            "${{ github.event.inputs.run-type }} \
+            ${{ github.event.inputs.service-name }} \
+            ${{ github.event.inputs.owner-email }}"

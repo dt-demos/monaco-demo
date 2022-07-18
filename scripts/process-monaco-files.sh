@@ -30,18 +30,19 @@ if [[ "$RUN_TYPE" == "create" ]]; then
     ls -l ./monaco/projects/$SERVICE/dashboard
 
     echo "Update service placeholders"
-    sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+    sed -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/dashboard/dashboard.yaml
-    sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+    sed -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/management-zone/mz.yaml
-    sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+    sed -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/slo/slo.yaml
-    sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+    sed -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/synthetic-monitor/synthetic.yaml
 
     echo "Update email placeholders"
-    sed -i '' -e 's~{{ .Env.OWNER_EMAIL }}~'"$OWNER_EMAIL"'~' \
+    sed -e 's~{{ .Env.OWNER_EMAIL }}~'"$OWNER_EMAIL"'~' \
         ./monaco/projects/$SERVICE/dashboard/dashboard.yaml
+
 elif [[ "$RUN_TYPE" == "delete" ]]; then
     echo "Removing old project folder"
     rm -rf ./monaco/projects/$SERVICE

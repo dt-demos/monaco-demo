@@ -1,0 +1,17 @@
+config:
+    - synthetic_http_prod_check: "synthetic_http.json"
+    - synthetic_browser_prod_check: "synthetic_browser.json"
+
+synthetic_http_prod_check:
+    - name: "Service ServiceA HTTP Check"
+    - description: "Service ServiceA HTTP Check"
+    - url: "http://www.dynatrace.com"
+    - location: "GEOLOCATION-45AB48D9D6925ECC"  # Frankfurt (AWS) 
+    - tag: "Service: ServiceA"
+
+synthetic_browser_prod_check:
+    - name: "Service ServiceA Browser Check"
+    - description: "Service ServiceA Browser Check"
+    - url: "http://www.dynatrace.com"
+    - location: "GEOLOCATION-45AB48D9D6925ECC"  # Frankfurt (AWS) 
+    - tag: "Service: ServiceA"

@@ -1,0 +1,29 @@
+{
+    "name": "{{ .name }}",
+    "rules": [
+      {
+        "type": "SERVICE",
+        "enabled": true,
+        "propagationTypes": [],
+        "conditions": [
+          {
+            "key": {
+              "attribute": "SERVICE_TAGS"
+            },
+            "comparisonInfo": {
+              "type": "TAG",
+              "operator": "EQUALS",
+              "value": {
+                "context": "CONTEXTLESS",
+                "key": "stage",
+                "value":"production"
+              },
+              "negate": false
+            }
+          }
+        ]
+      }
+    ],
+    "dimensionalRules": []
+  }
+

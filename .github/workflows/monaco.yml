@@ -6,7 +6,7 @@
 # takes service name as required input
 # run type defaults to create and can be value of create or delete
 
-name: Dynatrace Monitoring as Code
+name: Run Monaco
 on:
   workflow_dispatch:
     inputs:
@@ -26,8 +26,6 @@ jobs:
         DT_BASEURL: ${{ secrets.DT_BASEURL }}
         DT_API_TOKEN: ${{ secrets.DT_API_TOKEN }}
         NEW_CLI: "1"
-        OWNER_EMAIL: rob.jahn@dynatrace.com
-        SERVICE_NAME: ${{ github.event.inputs.service-name }}
     steps:
       # github automatically creates a volume to the checked out code
       # so we can reference them via ./foldername
@@ -36,7 +34,7 @@ jobs:
         run:  |
           if [[ "${{ github.event.inputs.run-type }}" == "create" ]]; then
             echo "Creating configuration"
-            monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects
+            "monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects/{{ github.event.inputs.service-name }}"
           elif [[ "${{ github.event.inputs.run-type }}" == "delete" ]]; then
             echo "Deleting configuration"
             # need to  replace the service name value for the delete.yaml file

@@ -1,6 +1,6 @@
 RUN_TYPE=$1
 SERVICE=$2
-OWNER_EMAIL=$2
+OWNER_EMAIL=$3
 
 if [ -z $RUN_TYPE ]; then
     echo "RUN_TYPE is required argument"

@@ -1,0 +1,17 @@
+config:
+    - synthetic_http_prod_check: "synthetic_http.json"
+    - synthetic_browser_prod_check: "synthetic_browser.json"
+
+synthetic_http_prod_check:
+    - name: "Service ServiceC HTTP Check"
+    - description: "Service ServiceC HTTP Check"
+    - url: "http://www.dynatrace.com"
+    - location: "GEOLOCATION-45AB48D9D6925ECC"  # Frankfurt (AWS) 
+    - tag: "Service: ServiceC"
+
+synthetic_browser_prod_check:
+    - name: "Service ServiceC Browser Check"
+    - description: "Service ServiceC Browser Check"
+    - url: "http://www.dynatrace.com"
+    - location: "GEOLOCATION-45AB48D9D6925ECC"  # Frankfurt (AWS) 
+    - tag: "Service: ServiceC"

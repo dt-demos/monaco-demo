@@ -16,7 +16,7 @@ on:
       owner-email:
         description: 'Specify dashboard owner'     
         required: true
-        default: 'rob.jahn@dyntrace.com'
+        default: 'rob.jahn@dynatrace.com'
 jobs:
   process-monaco-files:
     runs-on: ubuntu-latest

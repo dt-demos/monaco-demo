@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Process Monaco files
         run:  |
-          "./scripts/process-monaco-files.sh ${{ github.event.inputs.run-type }} ${{ github.event.inputs.service-name }} ${{ github.event.inputs.owner-email }}"
+          ". ./scripts/process-monaco-files.sh ${{ github.event.inputs.run-type }} ${{ github.event.inputs.service-name }} ${{ github.event.inputs.owner-email }}"
       - name: GIT commit and push all changed files
         env: 
           CI_COMMIT_MESSAGE: "${{ github.event.inputs.run-type }} monaco files service ${{ github.event.inputs.service-name }}"

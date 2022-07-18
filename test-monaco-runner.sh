@@ -42,7 +42,8 @@ fi
 
 MONACO_ENVIONMENT_FILE=./monaco/environments.yml
 MONACO_PROJECT=setup
-MONACO_PROJECT_BASE_PATH=./monaco/projects
+MONACO_BASE_PATH=./monaco/projects
+MONACO_PROJECT_BASE_PATH=$MONACO_BASE_PATH/$SERVICE_NAME
 
 if [[ "$RUN_TYPE" == "create" ]]; then
   echo "Creating configuration"
@@ -61,7 +62,7 @@ elif [[ "$RUN_TYPE" == "delete" ]]; then
   echo "Deleting configuration"
   # need to  replace the service name value for the delete.yaml file
   sed -e 's~SERVICE_NAME~'"$SERVICE_NAME"'~' \
-    $MONACO_PROJECT_BASE_PATH/delete.tmpl > $MONACO_PROJECT_BASE_PATH/delete.yaml
+    $MONACO_BASE_PATH/delete.tmpl > $MONACO_PROJECT_BASE_PATH/delete.yaml
 
   export DT_BASEURL=$DT_BASEURL && \
   export DT_API_TOKEN=$DT_API_TOKEN && \
@@ -73,7 +74,7 @@ elif [[ "$RUN_TYPE" == "delete" ]]; then
   $MONACO_PROJECT_BASE_PATH
 
   # once the delete is done, then delete the yaml file else it gets picked up on create
-  rm $MONACO_PROJECT_BASE_PATH/delete.yaml
+  #rm $MONACO_PROJECT_BASE_PATH/delete.yaml
 
 else 
   echo "ABORT: Bad RUN_TYPE value."

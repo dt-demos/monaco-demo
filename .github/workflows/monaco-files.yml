@@ -1,0 +1,33 @@
+# this pipeline is to be run manually 
+# takes service name as required input
+# run type defaults to create and can be value of create or delete
+
+name: Make Dynatrace Monitoring as Code Files
+on:
+  workflow_dispatch:
+    inputs:
+      service-name:
+        description: 'Name of service'     
+        required: true
+      run-type:
+        description: 'Specify action as create or delete'     
+        required: true
+        default: 'create'
+jobs:
+  observability-configuration:
+    runs-on: ubuntu-latest
+    steps:
+      # github automatically creates a volume to the checked out code
+      # so we can reference them via ./foldername
+      - uses: actions/checkout@v2
+      - name: Process files
+        run:  |
+          if [[ "${{ github.event.inputs.run-type }}" == "create" ]]; then
+            "${GITHUB_WORKSPACE}/scripts/create-monaco-files.sh ${{ github.event.inputs.service-name }}"
+          elif [[ "${{ github.event.inputs.run-type }}" == "delete" ]]; then
+            echo "Deleting configuration"
+            "${GITHUB_WORKSPACE}/scripts/delete-monaco-files.sh ${{ github.event.inputs.service-name }}"
+          else 
+            echo "ABORT: Bad RUN_TYPE value."
+            exit 1
+          fi

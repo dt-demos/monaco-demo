@@ -34,15 +34,15 @@ jobs:
         run:  |
           if [[ "${{ github.event.inputs.run-type }}" == "create" ]]; then
             echo "Creating configuration"
-            monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects/"{{ github.event.inputs.service-name }}"
+            monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects/"${{ github.event.inputs.service-name }}"
           elif [[ "${{ github.event.inputs.run-type }}" == "delete" ]]; then
             echo "Deleting configuration"
             # need to replace the service name value for the delete.yaml file
             sed -e 's~SERVICE_NAME~'"${{ github.event.inputs.service-name }}"'~' \
-              ./monaco/projects/delete.tmpl > ./monaco/projects/"{{ github.event.inputs.service-name }}"/delete.yaml
-            monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects/"{{ github.event.inputs.service-name }}"
+              ./monaco/projects/delete.tmpl > ./monaco/projects/"${{ github.event.inputs.service-name }}"/delete.yaml
+            monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects/"${{ github.event.inputs.service-name }}"
             # once the delete is done, then delete the yaml file else it gets picked up on create
-            rm ./monaco/projects//"{{ github.event.inputs.service-name }}"/delete.yaml
+            rm ./monaco/projects/"${{ github.event.inputs.service-name }}"/delete.yaml
           else 
             echo "ABORT: Bad RUN_TYPE value."
             exit 1

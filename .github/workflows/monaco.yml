@@ -21,7 +21,7 @@ jobs:
   observability-configuration:
     runs-on: ubuntu-latest
     container:
-      image: dtdemos/monaco-runner:1.7
+      image: dynatraceace/monaco-runner:release-v1.6.0
       env:
         DT_BASEURL: ${{ secrets.DT_BASEURL }}
         DT_API_TOKEN: ${{ secrets.DT_API_TOKEN }}

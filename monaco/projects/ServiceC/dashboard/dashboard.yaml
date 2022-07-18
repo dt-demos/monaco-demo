@@ -4,7 +4,7 @@ config:
 
 slo_dashboard:
   - name: "Service ServiceC SLO Dashboard"
-  - owner: "rob.jahn@dyntrace.com"
+  - owner: "rob.jahn@dynatrace.com"
   - serviceName: "ServiceC"
   - availabilitySloId: "/ServiceC/slo/availabilitySlo.id"
   - performanceSloId: "/ServiceC/slo/performanceSlo.id"
@@ -13,7 +13,7 @@ slo_dashboard:
 
 golden_signals:
   - name: "Service ServiceC 4 Golden Signals Dashboard"
-  - owner: "rob.jahn@dyntrace.com"
+  - owner: "rob.jahn@dynatrace.com"
   - serviceName: "ServiceC"
   - mzId: "/ServiceC/management-zone/management-zone-project.id"
   - mzName: "/ServiceC/management-zone/management-zone-project.name"

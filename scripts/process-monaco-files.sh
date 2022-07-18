@@ -20,10 +20,12 @@ if [[ "$RUN_TYPE" == "create" ]]; then
         exit 1
     fi
     echo "Removing old project folder"
+    ls -l ./monaco/projects
     rm -rf ./monaco/projects/$SERVICE
 
     echo "Cloning project template"
     cp -rf ./monaco/projects/setup ./monaco/projects/$SERVICE
+    ls -l ./monaco/projects
 
     echo "Update service placeholders"
     sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \

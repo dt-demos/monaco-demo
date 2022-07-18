@@ -41,7 +41,6 @@ if [ -z $RUN_TYPE ]; then
 fi
 
 MONACO_ENVIONMENT_FILE=./monaco/environments.yml
-MONACO_PROJECT=setup
 MONACO_BASE_PATH=./monaco/projects
 MONACO_PROJECT_BASE_PATH=$MONACO_BASE_PATH/$SERVICE_NAME
 
@@ -54,10 +53,10 @@ if [[ "$RUN_TYPE" == "create" ]]; then
   export SERVICE_NAME=$SERVICE_NAME && \
   export OWNER_EMAIL=$OWNER_EMAIL && \
   export NEW_CLI=1 && \
-      monaco deploy -v \
-      --environments $MONACO_ENVIONMENT_FILE \
-      --project $SERVICE_NAME \
-        $MONACO_BASE_PATH
+    monaco deploy -v \
+    --environments $MONACO_ENVIONMENT_FILE \
+    --project $SERVICE_NAME \
+      $MONACO_BASE_PATH
 
 elif [[ "$RUN_TYPE" == "delete" ]]; then
   echo "Deleting configuration"
@@ -70,9 +69,10 @@ elif [[ "$RUN_TYPE" == "delete" ]]; then
   export SERVICE_NAME=$SERVICE_NAME && \
   export OWNER_EMAIL=$OWNER_EMAIL && \
   export NEW_CLI=1 && \
-  monaco deploy -v \
-  --environments $MONACO_ENVIONMENT_FILE \
-  $MONACO_PROJECT_BASE_PATH
+    monaco deploy -v \
+    --environments $MONACO_ENVIONMENT_FILE \
+    --project $SERVICE_NAME \
+      $MONACO_BASE_PATH
 
   # once the delete is done, then delete the yaml file else it gets picked up on create
   #rm $MONACO_PROJECT_BASE_PATH/delete.yaml

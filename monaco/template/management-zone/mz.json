@@ -15,8 +15,8 @@
               "operator": "EQUALS",
               "value": {
                 "context": "CONTEXTLESS",
-                "key": "stage",
-                "value":"production"
+                "key": "Service",
+                "value":"{{ .name }}"
               },
               "negate": false
             }

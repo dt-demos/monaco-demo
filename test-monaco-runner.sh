@@ -56,7 +56,8 @@ if [[ "$RUN_TYPE" == "create" ]]; then
   export NEW_CLI=1 && \
       monaco deploy -v \
       --environments $MONACO_ENVIONMENT_FILE \
-      $MONACO_PROJECT_BASE_PATH
+      --project $SERVICE_NAME \
+        $MONACO_BASE_PATH
 
 elif [[ "$RUN_TYPE" == "delete" ]]; then
   echo "Deleting configuration"

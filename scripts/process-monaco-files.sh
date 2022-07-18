@@ -26,6 +26,8 @@ if [[ "$RUN_TYPE" == "create" ]]; then
     echo "Cloning project template"
     cp -rf ./monaco/projects/setup ./monaco/projects/$SERVICE
     ls -l ./monaco/projects
+    ls -l ./monaco/projects/$SERVICE
+    ls -l ./monaco/projects/$SERVICE/dashboard
 
     echo "Update service placeholders"
     sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \

@@ -2,7 +2,7 @@
 # takes service name as required input
 # run type defaults to create and can be value of create or delete
 
-name: Make Dynatrace Monitoring as Code Files
+name: Process Monaco Files
 on:
   workflow_dispatch:
     inputs:
@@ -26,7 +26,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Process Monaco files
         run:  |
-          ./scripts/process-monaco-files.sh \
-            "${{ github.event.inputs.run-type }} \
-            ${{ github.event.inputs.service-name }} \
-            ${{ github.event.inputs.owner-email }}"
+          ./scripts/process-monaco-files.sh "${{ github.event.inputs.run-type }} ${{ github.event.inputs.service-name }} ${{ github.event.inputs.owner-email }}"
+      - name: GIT commit and push all changed files
+        env: 
+          CI_COMMIT_MESSAGE: "${{ github.event.inputs.run-type }} monaco files service ${{ github.event.inputs.service-name }}"
+          CI_COMMIT_AUTHOR: demo-user
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push

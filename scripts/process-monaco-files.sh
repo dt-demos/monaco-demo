@@ -25,22 +25,20 @@ if [[ "$RUN_TYPE" == "create" ]]; then
 
     echo "Cloning project template"
     cp -rf ./monaco/projects/setup ./monaco/projects/$SERVICE
-    ls -l ./monaco/projects
     ls -l ./monaco/projects/$SERVICE
-    ls -l ./monaco/projects/$SERVICE/dashboard
 
     echo "Update service placeholders"
-    sed -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+    sed -i -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/dashboard/dashboard.yaml
-    sed -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+    sed -i -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/management-zone/mz.yaml
-    sed -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+    sed -i -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/slo/slo.yaml
-    sed -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+    sed -i -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/synthetic-monitor/synthetic.yaml
 
     echo "Update email placeholders"
-    sed -e 's~{{ .Env.OWNER_EMAIL }}~'"$OWNER_EMAIL"'~' \
+    sed -i -e 's~{{ .Env.OWNER_EMAIL }}~'"$OWNER_EMAIL"'~' \
         ./monaco/projects/$SERVICE/dashboard/dashboard.yaml
 
 elif [[ "$RUN_TYPE" == "delete" ]]; then

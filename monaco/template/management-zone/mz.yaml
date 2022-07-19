@@ -2,4 +2,4 @@ config:
   - management-zone-project: "mz.json"
 
 management-zone-project:
-  - name: "Service {{ .Env.SERVICE_NAME }}"
+  - name: "Service SERVICE_NAME"

@@ -24,34 +24,35 @@ if [[ "$RUN_TYPE" == "create" ]]; then
     echo "Removing old project folder"
     rm -rf ./monaco/projects/$SERVICE
 
-    echo "Cloning project template"
+    echo "Copying project template"
     mkdir -p ./monaco/projects
     cp -rf ./monaco/template ./monaco/projects/$SERVICE
+    echo "New monaco files"
     ls -l ./monaco/projects/$SERVICE
 
     echo "Update placeholders"
     if [[ "$(uname)" == "Darwin" ]]; then
         # MacOS require -i ''
-        sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+        sed -i '' -e 's~SERVICE_NAME~'"$SERVICE"'~' \
             ./monaco/projects/$SERVICE/dashboard/dashboard.yaml
-        sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+        sed -i '' -e 's~SERVICE_NAME~'"$SERVICE"'~' \
             ./monaco/projects/$SERVICE/management-zone/mz.yaml
-        sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+        sed -i '' -e 's~SERVICE_NAME~'"$SERVICE"'~' \
             ./monaco/projects/$SERVICE/slo/slo.yaml
-        sed -i '' -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+        sed -i '' -e 's~SERVICE_NAME~'"$SERVICE"'~' \
             ./monaco/projects/$SERVICE/synthetic-monitor/synthetic.yaml
-        sed -i '' -e 's~{{ .Env.OWNER_EMAIL }}~'"$OWNER_EMAIL"'~' \
+        sed -i '' -e 's~DASHBOARD_OWNER_EMAIL~'"$OWNER_EMAIL"'~' \
             ./monaco/projects/$SERVICE/dashboard/dashboard.yaml
     else
-        sed -i -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+        sed -i -e 's~SERVICE_NAME~'"$SERVICE"'~' \
         ./monaco/projects/$SERVICE/dashboard/dashboard.yaml
-        sed -i -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+        sed -i -e 's~SERVICE_NAME~'"$SERVICE"'~' \
             ./monaco/projects/$SERVICE/management-zone/mz.yaml
-        sed -i -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+        sed -i -e 's~SERVICE_NAME~'"$SERVICE"'~' \
             ./monaco/projects/$SERVICE/slo/slo.yaml
-        sed -i -e 's~{{ .Env.SERVICE_NAME }}~'"$SERVICE"'~' \
+        sed -i -e 's~SERVICE_NAME~'"$SERVICE"'~' \
             ./monaco/projects/$SERVICE/synthetic-monitor/synthetic.yaml
-        sed -i -e 's~{{ .Env.OWNER_EMAIL }}~'"$OWNER_EMAIL"'~' \
+        sed -i -e 's~DASHBOARD_OWNER_EMAIL~'"$OWNER_EMAIL"'~' \
             ./monaco/projects/$SERVICE/dashboard/dashboard.yaml
     fi
 

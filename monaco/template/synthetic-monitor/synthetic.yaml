@@ -3,15 +3,15 @@ config:
     - synthetic_browser_prod_check: "synthetic_browser.json"
 
 synthetic_http_prod_check:
-    - name: "Service {{ .Env.SERVICE_NAME }} HTTP Check"
-    - description: "Service {{ .Env.SERVICE_NAME }} HTTP Check"
+    - name: "Service SERVICE_NAME HTTP Check"
+    - description: "Service SERVICE_NAME HTTP Check"
     - url: "http://www.dynatrace.com"
     - location: "GEOLOCATION-45AB48D9D6925ECC"  # Frankfurt (AWS) 
-    - tag: "{{ .Env.SERVICE_NAME }}"
+    - tag: "SERVICE_NAME"
 
 synthetic_browser_prod_check:
-    - name: "Service {{ .Env.SERVICE_NAME }} Browser Check"
-    - description: "Service {{ .Env.SERVICE_NAME }} Browser Check"
+    - name: "Service SERVICE_NAME Browser Check"
+    - description: "Service SERVICE_NAME Browser Check"
     - url: "http://www.dynatrace.com"
     - location: "GEOLOCATION-45AB48D9D6925ECC"  # Frankfurt (AWS) 
-    - tag: "{{ .Env.SERVICE_NAME }}"
+    - tag: "SERVICE_NAME"

@@ -51,7 +51,7 @@
       }
     },
     "tags": [
-        { "context" : "CONTEXTLESS", "key" : "{{ .tag }}"}        
+      { "context" : "CONTEXTLESS", "key" : "Service", "value" : "{{ .tag }}"}        
     ],
     "managementZones": [],
     "automaticallyAssignedApps": [],

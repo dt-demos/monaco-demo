@@ -1,3 +1,5 @@
+#!/bin/bash
+
 RUN_TYPE=$1
 SERVICE=$2
 OWNER_EMAIL=$3

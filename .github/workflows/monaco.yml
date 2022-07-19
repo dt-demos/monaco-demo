@@ -39,8 +39,8 @@ jobs:
             echo "Deleting configuration"
             # need to replace the service name value for the delete.yaml file
             sed -e 's~SERVICE_NAME~'"${{ github.event.inputs.service-name }}"'~' \
-              ./monaco/template/delete.tmpl > ./monaco/projects/"${{ github.event.inputs.service-name }}"/delete.yaml
-            cat ./monaco/projects/"${{ github.event.inputs.service-name }}"/delete.yaml
+              ./monaco/template/delete.tmpl > ./monaco/projects/delete.yaml
+            cat ./monaco/projects/delete.yaml
             monaco deploy -v --environments ./monaco/environments.yml --project "${{ github.event.inputs.service-name }}" ./monaco/projects
           else 
             echo "ABORT: Bad RUN_TYPE value."

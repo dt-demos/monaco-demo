@@ -22,7 +22,6 @@ if [[ "$RUN_TYPE" == "create" ]]; then
         exit 1
     fi
     echo "Removing old project folder"
-    ls -l ./monaco/projects
     rm -rf ./monaco/projects/$SERVICE
 
     echo "Cloning project template"

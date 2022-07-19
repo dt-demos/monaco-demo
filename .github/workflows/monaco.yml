@@ -40,6 +40,7 @@ jobs:
             # need to replace the service name value for the delete.yaml file
             sed -e 's~SERVICE_NAME~'"${{ github.event.inputs.service-name }}"'~' \
               ./monaco/projects/delete.tmpl > ./monaco/projects/"${{ github.event.inputs.service-name }}"/delete.yaml
+            cat ./monaco/projects/"${{ github.event.inputs.service-name }}"/delete.yaml
             monaco deploy -v --environments ./monaco/environments.yml ./monaco/projects/"${{ github.event.inputs.service-name }}"
             # once the delete is done, then delete the yaml file else it gets picked up on create
             rm ./monaco/projects/"${{ github.event.inputs.service-name }}"/delete.yaml

@@ -25,7 +25,7 @@ if [[ "$RUN_TYPE" == "create" ]]; then
     rm -rf ./monaco/projects/$SERVICE
 
     echo "Cloning project template"
-    mkdir -p ./monaco/projects/$SERVICE
+    mkdir -p ./monaco/projects
     cp -rf ./monaco/template ./monaco/projects/$SERVICE
     ls -l ./monaco/projects/$SERVICE
 

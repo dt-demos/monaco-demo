@@ -9,18 +9,26 @@ The GitHub actions workflows are found in the `.github/workflows` folder and are
 * Dashboards
 * SLO
 
+# Recommended Approach
+
+The `crawl-walk-run` approach is recommended with Monaco and automation.
+
+1. **CRAWL** - Make a simple Monaco configuration and run Monaco from command line to understand what it does 
+1. **WALK** - Define templates and naming conventions, try out approaches to automate execution with scripts
+1. **RUN** - Try out approached to generate the detailed Monaco files from templates and then build a self-service model and abstract how execution gets done. For example: build a web portal, build a simple config file with scripts that parse that and generate the detailed Monaco files, fully automate with pipelines
+
 # Demo Locally
 
 ## 1) Run Process Monaco files
 
-The `scripts/process-monaco-files.sh` script can be directly called to create or delete the monaco files of the provided service.  For example:
+The `scripts/process-monaco-files.sh` script can be directly called to create or delete the Monaco files of the provided service.  For example:
 
 ```
 ./scripts/process-monaco-files.sh create ServiceB <DASHBOARD_OWNER_EMAIL>
 ./scripts/process-monaco-files.sh delete ServiceB
 ```
 
-## 2) Run Monaco monaco CLI directly.
+## 2) Run Monaco CLI directly.
 
 ```
 export SERVICE_NAME=<SERVICE_NAME>
@@ -35,7 +43,7 @@ monaco deploy -v \
 
 ## 3) Run Monaco using Docker Runner
 
-The `scripts/run-monaco.sh` script is provided for local testing of the [Monitoring as Code Runner](https://github.com/dynatrace-ace/monaco-runner). It assumes you the monaco project files already and have the Docker installed locally.
+The `scripts/run-monaco.sh` script is provided for local testing of the [Monitoring as Code Runner](https://github.com/dynatrace-ace/monaco-runner). It assumes you the Monaco project files already and have the Docker installed locally.
 
 For example:
 

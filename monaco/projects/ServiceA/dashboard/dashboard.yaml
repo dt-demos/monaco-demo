@@ -1,0 +1,19 @@
+config:
+  - slo_dashboard: "slo.json"
+  - golden_signals: "golden_signals.json"
+
+slo_dashboard:
+  - name: "Service ServiceA SLO Dashboard"
+  - owner: "rob.jahn@dynatrace.com"
+  - serviceName: "ServiceA"
+  - availabilitySloId: "ServiceA/slo/availabilitySlo.id"
+  - performanceSloId: "ServiceA/slo/performanceSlo.id"
+  - mzId: "ServiceA/management-zone/management-zone-project.id"
+  - mzName: "ServiceA/management-zone/management-zone-project.name"
+
+golden_signals:
+  - name: "Service ServiceA 4 Golden Signals Dashboard"
+  - owner: "rob.jahn@dynatrace.com"
+  - serviceName: "ServiceA"
+  - mzId: "ServiceA/management-zone/management-zone-project.id"
+  - mzName: "ServiceA/management-zone/management-zone-project.name"

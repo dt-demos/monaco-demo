@@ -1,0 +1,5 @@
+config:
+  - management-zone-project: "mz.json"
+
+management-zone-project:
+  - name: "Service ServiceA"

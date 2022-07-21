@@ -1,3 +1,9 @@
+## Disclaimer
+
+These projects are not supported by Dynatrace.
+
+Any issues please utilize github issues. We will try our best to get to your issues and questions.
+
 # Overview
 
 This is a demo of [Dynatrace Monitoring as Code](https://github.com/dynatrace-oss/dynatrace-monitoring-as-code) locally and with automated with GitHub actions workflows.

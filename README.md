@@ -21,7 +21,7 @@ The `crawl-walk-run` approach is recommended with Monaco and automation.
 
 1. **CRAWL** - Make a simple Monaco configuration and run Monaco from command line to understand what it does 
 1. **WALK** - Define templates and naming conventions, try out approaches to automate execution with scripts
-1. **RUN** - Try out approached to generate the detailed Monaco files from templates and then build a self-service model and abstract how execution gets done. For example: build a web portal, build a simple config file with scripts that parse that and generate the detailed Monaco files, fully automate with pipelines
+1. **RUN** - Establish requirements and process flow for a self-service model.  Then evaluate approaches to abstract the implementation details from users, generate the detailed Monaco files from templates and automate the execution. For example: Provide a web portal with a streamlined setup inputs that generates a ticket for approval or for some changes is auto-approved.  Upon approval, a pipeline can be run to generate the detailed Monaco files, applies the changes, and closes the ticket automatically.
 
 # Demo Locally
 

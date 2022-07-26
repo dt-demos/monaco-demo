@@ -1,0 +1,32 @@
+config:
+  - availabilitySlo: "slo.json"
+  - performanceSlo: "slo.json"
+  - errorSlo: "slo.json"
+
+availabilitySlo:
+  - name: "Service HylandApp1 Availability SLO"
+  - description: "% of time HylandApp1 service is available based on synthetic test"
+  - expression: "(builtin:synthetic.browser.availability.location.total:splitBy())"
+  - filter: "type(\\\"SYNTHETIC_TEST\\\")"
+  - target: "95.00"
+  - warning: "99.00"
+  - timeframe: "-1d" 
+
+performanceSlo:
+  - name: "Service HylandApp1 Performance SLO"
+  - description: "% of requests handled by HylandApp1 service faster than 500ms"
+  - expression: "(100)*(builtin:service.response.time:splitBy())/(builtin:service.response.time:splitBy())"
+  - filter: "type(\\\"SERVICE\\\")"
+  - target: "85.00"
+  - warning: "90.00"
+  - timeframe: "-1d"
+
+errorSlo:
+  - name: "Service HylandApp1 Error SLO"
+  - description: "% of requests with errors by HylandApp1"
+  - expression: "(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())"
+  - filter: "type(\\\"SERVICE\\\")"
+  - target: "85.00"
+  - warning: "90.00"
+  - timeframe: "-1d"
+

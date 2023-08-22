@@ -1,0 +1,19 @@
+config:
+  - slo_dashboard: "slo.json"
+  - golden_signals: "golden_signals.json"
+
+slo_dashboard:
+  - name: "Service Kodai SLO Dashboard"
+  - owner: "rob.jahn@dynatrace.com"
+  - serviceName: "Kodai"
+  - availabilitySloId: "Kodai/slo/availabilitySlo.id"
+  - performanceSloId: "Kodai/slo/performanceSlo.id"
+  - mzId: "Kodai/management-zone/management-zone-project.id"
+  - mzName: "Kodai/management-zone/management-zone-project.name"
+
+golden_signals:
+  - name: "Service Kodai 4 Golden Signals Dashboard"
+  - owner: "rob.jahn@dynatrace.com"
+  - serviceName: "Kodai"
+  - mzId: "Kodai/management-zone/management-zone-project.id"
+  - mzName: "Kodai/management-zone/management-zone-project.name"

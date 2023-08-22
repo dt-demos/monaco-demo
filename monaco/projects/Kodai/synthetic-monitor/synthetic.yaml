@@ -1,0 +1,17 @@
+config:
+    - synthetic_http_prod_check: "synthetic_http.json"
+    - synthetic_browser_prod_check: "synthetic_browser.json"
+
+synthetic_http_prod_check:
+    - name: "Service Kodai HTTP Check"
+    - description: "Service Kodai HTTP Check"
+    - url: "http://www.dynatrace.com"
+    - location: "GEOLOCATION-45AB48D9D6925ECC"  # Frankfurt (AWS) 
+    - tag: "Kodai"
+
+synthetic_browser_prod_check:
+    - name: "Service Kodai Browser Check"
+    - description: "Service Kodai Browser Check"
+    - url: "http://www.dynatrace.com"
+    - location: "GEOLOCATION-45AB48D9D6925ECC"  # Frankfurt (AWS) 
+    - tag: "Kodai"
